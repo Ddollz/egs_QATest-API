@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
-using MySql.Data.MySqlClient;
 using Nancy.Json;
 using System.Data;
 using System.Diagnostics;
@@ -14,7 +13,7 @@ namespace egs_QATest_API.Controllers
     [ApiController]
     public class UniCallController_SQLServer : ControllerBase
     {
-        readonly SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;Integrated Security=True");
+        readonly SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;User ID = egs.karl;Password = p0sM,VkqCaY)wD");
         //"MainDB": "Server=egspimqa-cluster.chzlnlcqo5x5.us-east-1.rds.amazonaws.com; Initial Catalog=egspim; User Id=egsaurora_joan;Password=Bd#lLV7x!Z6QoDIl;Connect Timeout= 6000;"
         // These are the parameters for the function
         // BEGIN BLOCK

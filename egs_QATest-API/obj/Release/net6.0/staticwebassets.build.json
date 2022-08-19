@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "uoO89ymR73rATKEieZuK16MWKA4X9581RFctjHszQMI=",
+  "Source": "egs_QATest-API",
+  "BasePath": "_content/egs_QATest-API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

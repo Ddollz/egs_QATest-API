@@ -31,6 +31,7 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Micr
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.CodeAnalysis.Workspaces.MSBuild.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Data.SqlClient.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.DiaSymReader.dll
+C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.DotNet.Scaffolding.Shared.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -38,6 +39,8 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Micr
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Extensions.PlatformAbstractions.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Identity.Client.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.IdentityModel.JsonWebTokens.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.IdentityModel.Logging.dll
@@ -54,6 +57,7 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Micr
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Nancy.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Newtonsoft.Json.Bson.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\NuGet.Common.dll
@@ -264,15 +268,3 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Debug\net6.0\refi
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Debug\net6.0\egs_QATest-API.pdb
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Debug\net6.0\egs_QATest-API.genruntimeconfig.cache
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Debug\net6.0\ref\egs_QATest-API.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Microsoft.Extensions.PlatformAbstractions.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Nancy.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Google.Protobuf.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\K4os.Compression.LZ4.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\K4os.Compression.LZ4.Streams.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\K4os.Hash.xxHash.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\MySql.Data.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\Ubiety.Dns.Core.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\ZstdNet.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Debug\net6.0\BouncyCastle.Crypto.dll

@@ -4,10 +4,13 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using MySqlX.XDevAPI.Relational;
+using Microsoft.IdentityModel.Tokens;
+using NuGet.Common;
 using System.Data;
 using System.Data.SqlTypes;
 using System.Drawing;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
@@ -18,8 +21,14 @@ namespace egs_QATest_API.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;Integrated Security=True");
+        private readonly IConfiguration _configuration;
+        public AuthController(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
 
+        SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;User ID = egs.karl;Password = p0sM,VkqCaY)wD");
+        
         [HttpPost("Register")]
         public async Task<ActionResult<String>> Register(egsAccount request)
         {
@@ -54,7 +63,7 @@ namespace egs_QATest_API.Controllers
         {
 
             DataTable dt1 = new DataTable();
-
+            string token;
 
             using (var cmd = new SqlCommand())
             {
@@ -79,14 +88,34 @@ namespace egs_QATest_API.Controllers
                 {
                     return BadRequest("Wrong Password");
                 }
+                token = CreateToken(row);
 
                 con.Close();
 
             }
-
-            return Ok("My Token");
+            return Ok(token);
         }
 
+        private string CreateToken(DataRow row)
+        {
+            List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Email, row["User_Email"].ToString())
+            };
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
+                _configuration.GetSection("AppSettings:Token").Value
+                ));
+
+            var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var token = new JwtSecurityToken(
+                claims: claims,
+                expires: DateTime.Now.AddDays(1),
+                signingCredentials:cred
+                );
+            var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+            return jwt;
+        }
 
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
