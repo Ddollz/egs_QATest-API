@@ -1,4 +1,3 @@
-using egs_QATest_API.Models;
 using Microsoft.EntityFrameworkCore;
 
 var myAllowSpecificOrigins = "_myAllowSpecificOrigins";
@@ -12,10 +11,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<EgsQAsuiteContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
+//builder.Services.AddDbContext<EgsQAsuiteContext>(options =>
+//{
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+//});
 
 // Enable CORS
 builder.Services.AddCors(options =>
