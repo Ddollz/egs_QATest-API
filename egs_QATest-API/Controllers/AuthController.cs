@@ -137,8 +137,11 @@ namespace egs_QATest_API.Controllers
             {
                 new Claim(ClaimTypes.Email, row["User_Email"].ToString()),
                 new Claim(ClaimTypes.Role, row["Role_ID"].ToString()),
-                new Claim(ClaimTypes.Name, row["User_Firstname"].ToString()),
-                new Claim(ClaimTypes.Surname, row["User_Lastname"].ToString())
+                new Claim("Firstname", row["User_Firstname"].ToString()),
+                new Claim("Lastname", row["User_Lastname"].ToString()),
+                new Claim("Status", row["User_Status"].ToString()),
+                new Claim("RoleTitle", row["RoleTitle"].ToString())
+
             };
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
                 _configuration.GetSection("AppSettings:Token").Value
