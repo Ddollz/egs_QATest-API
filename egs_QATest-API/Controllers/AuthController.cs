@@ -26,8 +26,13 @@ namespace egs_QATest_API.Controllers
         {
             _configuration = configuration;
         }
+        //public class TokenOptions
+        //{
+        //    public string RefreshToken { get; set; } = string.Empty;
+        //    public DateTime DateCreated { get; set; } = DateTime.Now;
+        //    public DateTime DateExpires { get; set; }
 
-        SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;User ID = egs.karl;Password = p0sM,VkqCaY)wD");
+        //}
         
         [HttpPost("Register")]
         public async Task<ActionResult<String>> Register(egsAccount request)
@@ -36,6 +41,8 @@ namespace egs_QATest_API.Controllers
 
             using (var cmd = new SqlCommand())
             {
+                SqlConnection con = new SqlConnection(_configuration.GetSection("ConnectionStrings:DefaultConnection").Value);
+
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "egsQAAccountInsertUpdate";
@@ -51,11 +58,9 @@ namespace egs_QATest_API.Controllers
                 con.Open();
                 cmd.ExecuteNonQuery();
                 con.Close();
-
-
             }
 
-            return Ok("fawef");
+            return Ok(request);
         }
 
         [HttpPost("Login")]
@@ -67,6 +72,7 @@ namespace egs_QATest_API.Controllers
 
             using (var cmd = new SqlCommand())
             {
+                SqlConnection con = new SqlConnection(_configuration.GetSection("ConnectionStrings:DefaultConnection").Value);
                 cmd.Connection = con;
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "egsQAAccountGet";
@@ -84,11 +90,19 @@ namespace egs_QATest_API.Controllers
 
                 DataRow row = dt1.Rows[0];
 
+                if (row["User_Status"].ToString() == "-1")
+                {
+                    return BadRequest("User is not activated.");
+                }
+
                 if (!VerifyPasswordHash(request.Password, (byte[])row["User_PasswordHash"], (byte[])row["User_PasswordSalt"]))
                 {
                     return BadRequest("Wrong Password");
                 }
                 token = CreateToken(row);
+
+                //var refreshToken = GenerateRefreshToken();
+                //SetRefreshToken(refreshToken);
 
                 con.Close();
 
@@ -96,11 +110,35 @@ namespace egs_QATest_API.Controllers
             return Ok(token);
         }
 
+        //private RefreshToken GetRefreshToken()
+        //{
+        //    var refreshToken = new RefreshToken
+        //    {
+        //        Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+        //        Expires = DateTime.Now.AddDays(7),
+        //        Created = DateTime.Now
+        //    };
+        //    return refreshToken;
+        //}
+
+        private void SetRefreshToken(RefreshToken NewRefreshToken)
+        {
+            var cookieOption = new CookieOptions
+            {
+                HttpOnly = true,
+                Expires = NewRefreshToken.Expires
+            };
+            Response.Cookies.Append("refreshToken", NewRefreshToken.Token, cookieOption);
+        }
+
         private string CreateToken(DataRow row)
         {
             List<Claim> claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Email, row["User_Email"].ToString())
+                new Claim(ClaimTypes.Email, row["User_Email"].ToString()),
+                new Claim(ClaimTypes.Role, row["Role_ID"].ToString()),
+                new Claim(ClaimTypes.Name, row["User_Firstname"].ToString()),
+                new Claim(ClaimTypes.Surname, row["User_Lastname"].ToString())
             };
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(
                 _configuration.GetSection("AppSettings:Token").Value

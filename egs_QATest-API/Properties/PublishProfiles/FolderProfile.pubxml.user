@@ -4,8 +4,8 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 -->
 <Project>
   <PropertyGroup>
-    <History>True|2022-08-19T03:50:38.6673970Z;False|2022-08-19T11:50:03.5556551+08:00;</History>
-    <LastFailureDetails />
     <_PublishTargetUrl>C:\Publish Temp</_PublishTargetUrl>
+    <History>True|2022-08-22T07:28:15.6279251Z;True|2022-08-22T14:58:50.9137984+08:00;True|2022-08-22T12:05:22.2027236+08:00;True|2022-08-22T12:01:12.0189337+08:00;True|2022-08-22T10:48:41.2708531+08:00;True|2022-08-22T10:38:30.1757625+08:00;True|2022-08-22T10:36:34.3527034+08:00;</History>
+    <LastFailureDetails />
   </PropertyGroup>
 </Project>

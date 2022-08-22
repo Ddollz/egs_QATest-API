@@ -4,6 +4,7 @@ using Microsoft.Data.SqlClient;
 using Nancy.Json;
 using System.Data;
 using System.Diagnostics;
+using System.Drawing;
 using System.Security.Cryptography;
 using System.Text.Json;
 
@@ -13,7 +14,15 @@ namespace egs_QATest_API.Controllers
     [ApiController]
     public class UniCallController_SQLServer : ControllerBase
     {
-        readonly SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;User ID = egs.karl;Password = p0sM,VkqCaY)wD");
+
+        private readonly IConfiguration _configuration;
+        public UniCallController_SQLServer(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
+
+
+        //readonly SqlConnection con = new SqlConnection("Data Source=WORKSTATION-181\\SQLEXPRESS;Initial Catalog=EgsQAsuite;User ID = egs.karl;Password = p0sM,VkqCaY)wD");
         //"MainDB": "Server=egspimqa-cluster.chzlnlcqo5x5.us-east-1.rds.amazonaws.com; Initial Catalog=egspim; User Id=egsaurora_joan;Password=Bd#lLV7x!Z6QoDIl;Connect Timeout= 6000;"
         // These are the parameters for the function
         // BEGIN BLOCK
@@ -41,36 +50,39 @@ namespace egs_QATest_API.Controllers
 
             using (var cmd = new SqlCommand())
             {
-                cmd.Connection = con;
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = incoming.CommandText;
-                foreach (JsonElement Iparam in incoming.Params)
+
+                using (var con = new SqlConnection(_configuration.GetSection("ConnectionStrings:DefaultConnection").Value))
                 {
-                    param IParam = serializer.Deserialize<param>(Iparam.ToString());
-                    cmd.Parameters.AddWithValue(IParam.Param, IParam.Value);
-                }
-                con.Open();
-                using (SqlDataAdapter r = new SqlDataAdapter(cmd))
-                {
-                    List<object> retObj = new List<object>();
-                    using (DataSet ds = new DataSet())
+                    cmd.Connection = con;
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.CommandText = incoming.CommandText;
+                    foreach (JsonElement Iparam in incoming.Params)
                     {
-                        r.Fill(ds);
-                        foreach (DataTable dt in ds.Tables)
+                        param IParam = serializer.Deserialize<param>(Iparam.ToString());
+                        cmd.Parameters.AddWithValue(IParam.Param, IParam.Value);
+                    }
+                    con.Open();
+                    using (SqlDataAdapter r = new SqlDataAdapter(cmd))
+                    {
+                        List<object> retObj = new List<object>();
+                        using (DataSet ds = new DataSet())
                         {
-                            List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-                            Dictionary<string, object> row;
-                            foreach (DataRow dr in dt.Rows)
+                            r.Fill(ds);
+                            foreach (DataTable dt in ds.Tables)
                             {
-                                row = new Dictionary<string, object>();
-                                foreach (DataColumn col in dt.Columns)
+                                List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                                Dictionary<string, object> row;
+                                foreach (DataRow dr in dt.Rows)
                                 {
-                                    //if (incoming.isString)
-                                    //{
-                                    //    row.Add(col.ColumnName, dr[col].ToString());
-                                    //}
-                                    //else
-                                    //{
+                                    row = new Dictionary<string, object>();
+                                    foreach (DataColumn col in dt.Columns)
+                                    {
+                                        //if (incoming.isString)
+                                        //{
+                                        //    row.Add(col.ColumnName, dr[col].ToString());
+                                        //}
+                                        //else
+                                        //{
                                         if (dr[col] == System.DBNull.Value)
                                         {
                                             row.Add(col.ColumnName, "");
@@ -79,16 +91,16 @@ namespace egs_QATest_API.Controllers
                                         {
                                             row.Add(col.ColumnName, dr[col]);
                                         }
-                                    //}
+                                        //}
+                                    }
+                                    rows.Add(row);
                                 }
-                                rows.Add(row);
+                                retObj.Add(rows);
                             }
-                            retObj.Add(rows);
                         }
+                        return retObj;
                     }
-                    return retObj;
                 }
-
                 //cmd.ExecuteNonQuery();
                 //con.Close();
                 //return msg;

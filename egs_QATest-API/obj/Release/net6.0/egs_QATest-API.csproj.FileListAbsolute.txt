@@ -12,11 +12,7 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\eg
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\egs_QATest-API.runtimeconfig.json
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\egs_QATest-API.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\egs_QATest-API.pdb
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Google.Protobuf.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Humanizer.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\K4os.Compression.LZ4.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\K4os.Compression.LZ4.Streams.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\K4os.Hash.xxHash.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\MessagePack.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\MessagePack.Annotations.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\System.Web.Cors.dll
@@ -68,9 +64,6 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Mi
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Microsoft.Win32.SystemEvents.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\MySql.Data.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Ubiety.Dns.Core.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\ZstdNet.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Nancy.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Newtonsoft.Json.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Newtonsoft.Json.Bson.dll
@@ -83,7 +76,6 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Nu
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\NuGet.ProjectModel.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\NuGet.Protocol.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\NuGet.Versioning.dll
-C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\BouncyCastle.Crypto.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\Swashbuckle.AspNetCore.SwaggerUI.dll
