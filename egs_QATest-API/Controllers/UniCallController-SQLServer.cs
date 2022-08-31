@@ -67,35 +67,41 @@ namespace egs_QATest_API.Controllers
                         List<object> retObj = new List<object>();
                         using (DataSet ds = new DataSet())
                         {
-                            r.Fill(ds);
-                            foreach (DataTable dt in ds.Tables)
+                            try
                             {
-                                List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
-                                Dictionary<string, object> row;
-                                foreach (DataRow dr in dt.Rows)
+                                r.Fill(ds);
+                                foreach (DataTable dt in ds.Tables)
                                 {
-                                    row = new Dictionary<string, object>();
-                                    foreach (DataColumn col in dt.Columns)
+                                    List<Dictionary<string, object>> rows = new List<Dictionary<string, object>>();
+                                    Dictionary<string, object> row;
+                                    foreach (DataRow dr in dt.Rows)
                                     {
-                                        //if (incoming.isString)
-                                        //{
-                                        //    row.Add(col.ColumnName, dr[col].ToString());
-                                        //}
-                                        //else
-                                        //{
-                                        if (dr[col] == System.DBNull.Value)
+                                        row = new Dictionary<string, object>();
+                                        foreach (DataColumn col in dt.Columns)
                                         {
-                                            row.Add(col.ColumnName, "");
+                                            //if (incoming.isString)
+                                            //{
+                                            //    row.Add(col.ColumnName, dr[col].ToString());
+                                            //}
+                                            //else
+                                            //{
+                                            if (dr[col] == System.DBNull.Value)
+                                            {
+                                                row.Add(col.ColumnName, "");
+                                            }
+                                            else
+                                            {
+                                                row.Add(col.ColumnName, dr[col]);
+                                            }
+                                            //}
                                         }
-                                        else
-                                        {
-                                            row.Add(col.ColumnName, dr[col]);
-                                        }
-                                        //}
+                                        rows.Add(row);
                                     }
-                                    rows.Add(row);
+                                    retObj.Add(rows);
                                 }
-                                retObj.Add(rows);
+                            }catch(Exception ex)
+                            {
+                                return BadRequest(ex.Message);
                             }
                         }
                         return retObj;
