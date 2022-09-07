@@ -268,3 +268,4 @@ C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Release\net6.0\re
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Release\net6.0\egs_QATest-API.pdb
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Release\net6.0\egs_QATest-API.genruntimeconfig.cache
 C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\obj\Release\net6.0\ref\egs_QATest-API.dll
+C:\Temp\egs_QATestManagement\egs_QATest-API\egs_QATest-API\bin\Release\net6.0\egs_QATest-API.staticwebassets.runtime.json

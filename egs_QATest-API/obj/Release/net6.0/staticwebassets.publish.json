@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "Dw1k9l1xb/WlpbrNidZpDjkC3JmPMAi8gFTcnltATfw=",
+  "Hash": "Uenb/no5D+x9mce7Rcg6ZiC4LdhDCTjHvjNYqWqSPKQ=",
   "Source": "egs_QATest-API",
   "BasePath": "_content/egs_QATest-API",
   "Mode": "Default",
   "ManifestType": "Publish",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "egs_QATest-API\\wwwroot",
+      "Source": "egs_QATest-API",
+      "ContentRoot": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\",
+      "BasePath": "_content/egs_QATest-API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

@@ -17,6 +17,7 @@ using System.Collections.Generic;
 using System.IO;
 using Nancy;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using static System.Net.WebRequestMethods;
 
 namespace egs_QATest_API.Controllers
 {
@@ -53,6 +54,7 @@ namespace egs_QATest_API.Controllers
             public string Params { get; set; }
             public int? file_ID { get; set; } = null;
             public bool isDownload { get; set; } = false;
+            public bool isDelete { get; set; } = false;
             public IFormFile? files { get; set; }
         }
 
@@ -148,6 +150,7 @@ namespace egs_QATest_API.Controllers
             {
 
                 string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
+                var tempFilename = "";
                 using (var cmd = new SqlCommand())
                 {
 
@@ -181,15 +184,32 @@ namespace egs_QATest_API.Controllers
                                 {
                                     Directory.CreateDirectory(path);
                                 }
-                                using (FileStream fileStream = System.IO.File.Create(path + fileUpload.files.FileName))
+
+                                DirectoryInfo d = new DirectoryInfo(path);
+
+                                FileInfo[] FilesInDir = d.GetFiles();
+
+                                Random rnd = new Random();
+
+                                int num = rnd.Next();
+
+                                tempFilename = System.IO.Path.GetFileNameWithoutExtension(fileUpload.files.FileName) + num;
+                                while (System.IO.File.Exists(path+tempFilename))
+                                {
+                                    num = rnd.Next();
+                                    tempFilename = tempFilename + num + System.IO.Path.GetExtension(fileUpload.files.FileName);
+                                }
+
+                                using (FileStream fileStream = System.IO.File.Create(path + tempFilename))
                                 {
                                     fileUpload.files.CopyTo(fileStream);
                                     fileStream.Flush();
                                 }
                             }
+                            cmd.Parameters.AddWithValue("@Filesize", fileUpload.files.Length);
                             cmd.Parameters.AddWithValue("@Filetype", fileUpload.files.ContentType.ToString());
                             cmd.Parameters.AddWithValue("@Filepath", path);
-                            cmd.Parameters.AddWithValue("@Filename", fileUpload.files.FileName);
+                            cmd.Parameters.AddWithValue("@Filename", tempFilename);
                         }
 
                         con.Open();
@@ -209,7 +229,7 @@ namespace egs_QATest_API.Controllers
                                     r.Fill(ds);
                                     foreach (DataTable dt in ds.Tables)
                                     {
-                                        if (fileUpload.isDownload)
+                                        if (fileUpload.isDownload || fileUpload.isDelete)
                                         {
                                             string expression;
                                             expression = "CaseAttachment_ID = " + fileUpload.file_ID;
@@ -227,9 +247,13 @@ namespace egs_QATest_API.Controllers
                                             if (System.IO.File.Exists(finalPath))
                                             {
                                                 byte[] b = System.IO.File.ReadAllBytes(finalPath);
-                                                if (fileUpload.isDownload && fileUpload.file_ID.ToString() == CaseAttachment_ID)
+                                                if (fileUpload.isDownload && fileUpload.file_ID.ToString() == CaseAttachment_ID && !fileUpload.isDelete)
                                                 {
                                                     return File(b, filetype);
+                                                }
+                                                else if (fileUpload.isDelete && fileUpload.file_ID.ToString() == CaseAttachment_ID)
+                                                {
+                                                    System.IO.File.Delete(finalPath.ToString());
                                                 }
                                             }
                                         }
@@ -243,8 +267,7 @@ namespace egs_QATest_API.Controllers
 
 
                                                 if (dr[col] == System.DBNull.Value) row.Add(col.ColumnName, "");
-
-                                                row.Add(col.ColumnName, dr[col]);
+                                                else row.Add(col.ColumnName, dr[col]);
                                                 if (col.ColumnName == "Filetype") filetype = dr[col].ToString();
                                                 if (col.ColumnName == "Filepath") filepath = dr[col].ToString();
                                                 if (col.ColumnName == "Filename") filename = dr[col].ToString();
