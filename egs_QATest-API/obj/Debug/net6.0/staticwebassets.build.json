@@ -1,11 +1,71 @@
 {
   "Version": 1,
-  "Hash": "uoO89ymR73rATKEieZuK16MWKA4X9581RFctjHszQMI=",
+  "Hash": "RLZUBr9lpkExMEItxtU3QuEiMQpcwQvAGOJkc73wuwE=",
   "Source": "egs_QATest-API",
   "BasePath": "_content/egs_QATest-API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "egs_QATest-API\\wwwroot",
+      "Source": "egs_QATest-API",
+      "ContentRoot": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\",
+      "BasePath": "_content/egs_QATest-API",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\uploads\\1\\account erd.jpg",
+      "SourceId": "egs_QATest-API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\",
+      "BasePath": "_content/egs_QATest-API",
+      "RelativePath": "uploads/1/account erd.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1\\account erd.jpg"
+    },
+    {
+      "Identity": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\uploads\\1\\Database details.txt",
+      "SourceId": "egs_QATest-API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\",
+      "BasePath": "_content/egs_QATest-API",
+      "RelativePath": "uploads/1/Database details.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1\\Database details.txt"
+    },
+    {
+      "Identity": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\uploads\\1\\erd5.jpg",
+      "SourceId": "egs_QATest-API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Temp\\egs_QATestManagement\\egs_QATest-API\\egs_QATest-API\\wwwroot\\",
+      "BasePath": "_content/egs_QATest-API",
+      "RelativePath": "uploads/1/erd5.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1\\erd5.jpg"
+    }
+  ]
 }

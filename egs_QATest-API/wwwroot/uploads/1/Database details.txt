@@ -1,0 +1,68 @@
+
+IP Address: 192.168.1.126
+Login Name: egs.rommel
+Password: H2wS2HyIp7jkyR
+
+IP Address: 192.168.1.126
+Login Name: egs.royce
+Password: BjRVaFgRw5SGGd
+
+IP Address: 192.168.1.126
+Login Name: egs.lance
+Password: LarEdhgIdxdXu0
+
+EGS_QATest_API
+
+Scaffold-DbContext "Server=WORKSTATION-181\SQLEXPRESS;Database=EgsQAsuite;Trusted_Connection=True;Id=freecode;Password=freecodespot" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+{
+  "user_email": "Test@gmail.com",
+  "user_Firstname": "Test",
+  "user_LastName": "Test",
+  "password": "123456",
+  "user_isAdmin": -1,
+  "user_Status": -1,
+  "role_ID": 3,
+  "roleTitle": "QA Test"
+}
+
+{
+  "user_email": "Test@gmail.com",
+  "password": "123456"
+}
+
+{
+    "CommandText": "egsQARoleGet",
+    "Params": 
+    [
+        {
+        "Param": "@Role_ID",
+        "Value": ""
+        }
+    ]
+}
+
+egsQATestCaseAttachmentGet
+    [
+        {
+        "Param": "@CaseAttachment_ID",
+        "Value": "90"
+        }
+    ]
+
+{
+    "CommandText": "egsQATestCaseAttachmentInsertUpdate",
+    "Params": 
+    [
+        {
+        "Param": "@Case_ID",
+        "Value": "90"
+        },
+        {
+        "Param": "@User_ID",
+        "Value": "1"
+        }
+    ]
+}	
+
+
+{"CommandText":"egsQASuiteDelete","Params":[{"Param":"@Suite_ID","Value":"1033"}]}
